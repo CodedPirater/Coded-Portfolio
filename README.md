@@ -1,5 +1,6 @@
-# Coded-Portfolio..
-This a portfolio of Coded Pirater ...
+# Coded Pirater 🔥🔥 
+
+This a portfolio of Coded Pirater also you can say Cody...! in short !! 
 
 Official credit goes to Clever Programmer team from where i got this to edit and look it better ..!
 
