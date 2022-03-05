@@ -1,85 +1,97 @@
-const Portfolio = function() {
-	function makeWords() {
-		var words = [
-			{
-				text: "coffee",
-				weight: 12.3
-			}, {
-				text: "css3",
-				weight: 8
-			}, {
-				text: "javascript",
-				weight: 14
-			}, {
-				text: "beginner",
-				weight: 3
-			}, {
-				text: "programming",
-				weight: 7
-			}, {
-				text: "ethical",
-				weight: 10
+const Portfolio = (function () {
+  function makeWords() {
+    var words = [
+      {
+        text: "coffee",
+        weight: 12.3,
+      },
+      {
+        text: "css3",
+        weight: 8,
+      },
+      {
+        text: "javascript",
+        weight: 14,
+      },
+      {
+        text: "beginner",
+        weight: 3,
+      },
+      {
+        text: "programming",
+        weight: 7,
+      },
+      {
+        text: "ethical",
+        weight: 10,
+      },
+      {
+        text: "python",
+        weight: 9,
+      },
+      {
+        text: "Coded Pirater",
+        weight: 15,
+      },
+      {
+        text: "hacking",
+        weight: 7,
+      },
+    ];
+    return words;
+  }
 
-			}, {
-				text: "python",
-				weight: 9
-			}, {
-				text: "Coded Pirater",
-				weight: 15
-			}, {
-				text: "hacking",
-				weight: 7
-			}
-		];
-		return words;
-	}
+  function makeWordCloud(words) {
+    $(".coding-domains").jQCloud(words, { delay: 120 });
+  }
 
-	function makeWordCloud(words) {
-		$('.teaching-domains').jQCloud(words, {delay: 120});
-	}
+  function displayWordCloud() {
+    var count = 1;
+    $(window).on("scroll", function () {
+      var y_scroll_pos = window.pageYOffset;
+      var scroll_pos_test = 2700; // set to whatever you want it to be
+      var words = makeWords();
+      if (y_scroll_pos > scroll_pos_test && count <= 1) {
+        makeWordCloud(words);
+        count++;
+      }
+    });
+  }
 
-	function displayWordCloud() {
-		var count = 1;
-		$(window).on('scroll', function() {
-			var y_scroll_pos = window.pageYOffset;
-			var scroll_pos_test = 2700; // set to whatever you want it to be
-			var words = makeWords();
-			if (y_scroll_pos > scroll_pos_test && count <= 1) {
-				makeWordCloud(words);
-				count++;
-			}
-		});
-	}
+  function designForm() {
+    $("#my-modal form").addClass("my-form");
+  }
 
-	function designForm() {
-		$("#my-modal form").addClass("my-form");
-	}
+  function typeAnimation() {
+    Typed.new("#writing-text", {
+      strings: [
+        "CEO and Founder of Coded Pirater",
+        "Love everything about Code.",
+        "COFFEE☕ and CODE.",
+        "'CODE to HACK'",
+        "@Coded Pirater😉",
+      ],
+      // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
+      stringsElement: null,
+      // typing speed
+      typeSpeed: 1,
+      contentType: "text",
+      callback: function () {
+        $("#writing-text").css({
+          color: "#fff",
+          "background-color": "#000000",
+        });
+      },
+      preStringTyped: function () {},
+      onStringTyped: function () {},
+    });
+  }
 
-	function typeAnimation() {
-		Typed.new("#writing-text", {
-			strings: [
-				"Love Python programming.", "Love everything about Code.", "Love to Hack Everything...", "COFFEE and CODE.", "'CODE to HACK'", "@Coded Pirater"
-			],
-			// Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
-			stringsElement: null,
-			// typing speed
-			typeSpeed: 1,
-			contentType: 'text',
-			callback: function() {
-				$("#writing-text").css({"color": "#fff", "background-color": "#000000"});
-			},
-			preStringTyped: function() {},
-			onStringTyped: function() {}
-		});
-	}
-
-	return {
-		displayWordCloud: displayWordCloud,
-		typeAnimation: typeAnimation
-	}
-
-}();
-
+  return {
+    displayWordCloud: displayWordCloud,
+    typeAnimation: typeAnimation,
+  };
+})();
 
 Portfolio.displayWordCloud();
 Portfolio.typeAnimation();
